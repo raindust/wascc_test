@@ -28,7 +28,7 @@ bench:
 
 build:
 	@$(CARGO) build
-	wascap sign $(DEBUG)/hellohttp.wasm $(DEBUG)/hellohttp_signed.wasm -i $(KEYDIR)/account.nk -u $(KEYDIR)/module.nk -s -n hellohttp
+	wascap sign $(DEBUG)/hellohttp.wasm $(DEBUG)/hellohttp_signed.wasm -i $(KEYDIR)/account.nk -u $(KEYDIR)/module.nk -s -g -n hellohttp
 
 check:
 	@$(CARGO) check
@@ -47,7 +47,7 @@ update:
 
 release:
 	@$(CARGO) build --release
-	wascap sign $(RELEASE)/hellohttp.wasm $(RELEASE)/hellohttp_signed.wasm -i $(KEYDIR)/account.nk -u $(KEYDIR)/module.nk -s -n hellohttp
+	wascap sign $(RELEASE)/hellohttp.wasm $(RELEASE)/hellohttp_signed.wasm -i $(KEYDIR)/account.nk -u $(KEYDIR)/module.nk -s -g -n hellohttp
 	
 keys: keys-account
 keys: keys-module

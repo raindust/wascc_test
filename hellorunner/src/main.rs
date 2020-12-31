@@ -5,28 +5,27 @@ fn main() -> std::result::Result<(), Box<dyn std::error::Error>> {
     let _ = env_logger::try_init();
 
     let host = WasccHost::new();
-    host.add_actor(Actor::from_file("../hellohttp/hello_signed.wasm")?)?;
-    host.add_actor(Actor::from_file("../hellohttp2/hello_signed.wasm")?)?;
+    host.add_actor(Actor::from_file("../hellohttp/target/wasm32-unknown-unknown/debug/hellohttp_signed.wasm")?)?;
+    host.add_actor(Actor::from_file("../hellohttp2/target/wasm32-unknown-unknown/debug/hellohttp_signed.wasm")?)?;
     host.add_native_capability(NativeCapability::from_file(
         "../libwascc_httpsrv.dylib", None)?)?;
     host.add_native_capability(NativeCapability::from_file(
         "../libkeyvalue.dylib", None)?)?;
     host.bind_actor(
-        "MDAELGEJDJPPMBHCVTXRCS6TYMEVOSEYLYHPDVWVBBRHNQ6KNIEBHNHQ",
+        "MDCLGKGFS7OWD23C3LAL3QLSBIBCRQM52TW2D45UKZMZ2AVVLGTB3QMF",
         "wascc:http_server",
         None,
         generate_port_config(8081),
     )?;
-
     host.bind_actor(
-        "MDAELGEJDJPPMBHCVTXRCS6TYMEVOSEYLYHPDVWVBBRHNQ6KNIEBHNHQ",
+        "MDCLGKGFS7OWD23C3LAL3QLSBIBCRQM52TW2D45UKZMZ2AVVLGTB3QMF",
         "wascc:messaging",
         None,
         HashMap::new(),
     )?;
 
     host.bind_actor(
-        "MAVB7LZ22BBLNW5SL3EZP7A6NTFGZFHFJVSFSPUINTLR5YQXR3LZVO7H",
+        "MBIBIPLIP33XA6EPELRIAYCXJAX2P6RTM6PGC43FWUINTQSHTLISDCKV",
         "wascc:messaging",
         None,
         HashMap::new(),

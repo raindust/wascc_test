@@ -16,10 +16,8 @@ extern crate wascc_actor as actor;
 #[macro_use] extern crate serde_json;
 
 use actor::prelude::*;
-use codec::messaging::BrokerMessage;
 
 actor_handlers! { 
-    codec::messaging::OP_DELIVER_MESSAGE => handle_message_broker,
     codec::http::OP_HANDLE_REQUEST => hello_world, 
     codec::core::OP_HEALTH_REQUEST => health }
 
@@ -35,10 +33,5 @@ fn hello_world(_payload: codec::http::Request) -> HandlerResult<codec::http::Res
 
 fn health(_req: codec::core::HealthRequest
 ) -> HandlerResult<()> {
-    Ok(())
-}
-
-fn handle_message_broker(msg: BrokerMessage) -> HandlerResult<()> {
-    println!("~~~~~~message: {:?}", msg);
     Ok(())
 }

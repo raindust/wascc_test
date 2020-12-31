@@ -111,7 +111,7 @@ impl CapabilityProvider for KeyvalueProvider {
                     body: "hello message".as_bytes().to_vec(),
                 };
 		println!("actor is {}", &actor);
-		let target_actor = "MAVB7LZ22BBLNW5SL3EZP7A6NTFGZFHFJVSFSPUINTLR5YQXR3LZVO7H";
+		let target_actor = "MBIBIPLIP33XA6EPELRIAYCXJAX2P6RTM6PGC43FWUINTQSHTLISDCKV";
 		println!("target_actor is {}", &target_actor);
 		println!("msg is {:?}", &msg);
                 if let Err(e) = lock.dispatch(target_actor, OP_DELIVER_MESSAGE, &serialize(msg).unwrap()){
