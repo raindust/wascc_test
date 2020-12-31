@@ -6,20 +6,27 @@ fn main() -> std::result::Result<(), Box<dyn std::error::Error>> {
 
     let host = WasccHost::new();
     host.add_actor(Actor::from_file("../hellohttp/hello_signed.wasm")?)?;
+    host.add_actor(Actor::from_file("../hellohttp2/hello_signed.wasm")?)?;
     host.add_native_capability(NativeCapability::from_file(
         "../libwascc_httpsrv.dylib", None)?)?;
     host.add_native_capability(NativeCapability::from_file(
         "../libkeyvalue.dylib", None)?)?;
-        
     host.bind_actor(
-        "MCYQSR5WIOABHZP6Z3SG67REVC2QDCYAHUVXHUSSLFWNO55OZ3O33MKR",
+        "MDAELGEJDJPPMBHCVTXRCS6TYMEVOSEYLYHPDVWVBBRHNQ6KNIEBHNHQ",
         "wascc:http_server",
         None,
         generate_port_config(8081),
     )?;
 
     host.bind_actor(
-        "MCYQSR5WIOABHZP6Z3SG67REVC2QDCYAHUVXHUSSLFWNO55OZ3O33MKR",
+        "MDAELGEJDJPPMBHCVTXRCS6TYMEVOSEYLYHPDVWVBBRHNQ6KNIEBHNHQ",
+        "wascc:messaging",
+        None,
+        HashMap::new(),
+    )?;
+
+    host.bind_actor(
+        "MAVB7LZ22BBLNW5SL3EZP7A6NTFGZFHFJVSFSPUINTLR5YQXR3LZVO7H",
         "wascc:messaging",
         None,
         HashMap::new(),

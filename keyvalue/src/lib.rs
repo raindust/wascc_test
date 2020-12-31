@@ -110,8 +110,12 @@ impl CapabilityProvider for KeyvalueProvider {
                     reply_to: "22".to_string(),
                     body: "hello message".as_bytes().to_vec(),
                 };
-                if let Err(e) = lock.dispatch(actor, OP_DELIVER_MESSAGE, &serialize(msg).unwrap()) {
-        			error!("Dispatch failed in test relay {}", e);
+		println!("actor is {}", &actor);
+		let target_actor = "MAVB7LZ22BBLNW5SL3EZP7A6NTFGZFHFJVSFSPUINTLR5YQXR3LZVO7H";
+		println!("target_actor is {}", &target_actor);
+		println!("msg is {:?}", &msg);
+                if let Err(e) = lock.dispatch(target_actor, OP_DELIVER_MESSAGE, &serialize(msg).unwrap()){
+        			println!("Dispatch failed in test relay {}", e);
         		}
                 println!("### 222");
                 Ok(Vec::new())
